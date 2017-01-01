@@ -6,13 +6,7 @@ import numpy as np
 
 def softmax(x):
     """Compute softmax values for each sets of scores in x."""
-    sum = 0
-    y = np.copy(x)
-    for i in np.nditer(y):
-        sum += np.exp(i)
-    for j in np.nditer(y, op_flags=['readwrite']):
-        j[...] = np.exp(j) / sum
-    return y
+    return np.exp(x) / np.sum(np.exp(x), axis=0)
     
 print(softmax(scores))
 
